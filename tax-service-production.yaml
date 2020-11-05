@@ -18,4 +18,4 @@ eureka:
       defaultZone:  http://localhost:8100/eureka
       
       
-message: Welcome to production-M tax service
+message: Welcome to production-A tax service
