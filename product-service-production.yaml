@@ -18,4 +18,4 @@ eureka:
       defaultZone:  http://localhost:8100/eureka
       
       
-message: Welcome to production-N product service
+message: Welcome to production-A product service
