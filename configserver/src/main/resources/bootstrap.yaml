@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: config-server
+    
+  cloud:    config:      server:        git:          uri: ${git.uri:https://github.com/mustansa/microservicestraining.git}
+          username: mustansa
+          password: 02d5d49491ee4e029e10f6efa9bd75df101104e2
+          clone-on-start: true
+          
+server:  port: 8110

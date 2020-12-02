@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: product-service
+  
+  profiles:
+    active: ${profile:devlopment}
+      cloud:
+    config:
+      uri: ${configserver.url:http://localhost:8110}       

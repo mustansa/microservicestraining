@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS tax;
+CREATE TABLE tax(id NUMBER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(15) NOT NULL,taxes DOUBLE(4) NOT NULL);
+INSERT INTO tax(name,taxes) VALUES ('Apple', 7.0), ('Orange', 8.0),('Mango',9.0);

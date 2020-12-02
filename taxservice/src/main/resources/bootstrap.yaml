@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: tax-service
+    
+  profiles:
+    active: ${profile:devlopment}
+      cloud:    config:      uri: ${configserver.url:http://localhost:8110}       
