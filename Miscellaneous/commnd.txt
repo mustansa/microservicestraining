@@ -1,0 +1,124 @@
+
+
+docker-machine create --virtualbox-memory "2560"  --driver "virtualbox"  docker-vm1
+
+
+
+
+
+
+docker-machine create --virtualbox-memory "2560"  --driver "virtualbox"  docker-vm1
+
+
+
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/windows/amd64/kubectl.exe
+
+
+
+
+
+
+
+
+C:\labs>docker-machine ls
+NAME         ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
+docker-vm1   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
+docker-vm2   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5
+
+C:\labs>docker-machine env docker-vm1
+SET DOCKER_TLS_VERIFY=1
+SET DOCKER_HOST=tcp://192.168.99.100:2376
+SET DOCKER_CERT_PATH=C:\Users\w2cluster231\.docker\machine\machines\docker-vm1
+SET DOCKER_MACHINE_NAME=docker-vm1
+SET COMPOSE_CONVERT_WINDOWS_PATHS=true
+REM Run this command to configure your shell:
+REM     @FOR /f "tokens=*" %i IN ('docker-machine env docker-vm1') DO @%i
+
+C:\labs> @FOR /f "tokens=*" %i IN ('docker-machine env docker-vm1') DO @%i
+
+C:\labs>docker pull rabbitmq:3-management
+3-management: Pulling from library/rabbitmq
+23884877105a: Pull complete
+bc38caa0f5b9: Pull complete
+2910811b6c42: Pull complete
+36505266dcc6: Pull complete
+15c38f93e1dd: Pull complete
+5bbf29aa0268: Pull complete
+3c6f3aa1c421: Pull complete
+2c19dab5d802: Pull complete
+ffc19363f52c: Pull complete
+766023321682: Pull complete
+fd8a4a897d34: Pull complete
+53010f28dc34: Pull complete
+Digest: sha256:8c649c339b49bedf8185c89f3fbeda669cf2fcccabefc320bb2e2992b6b745d5
+Status: Downloaded newer image for rabbitmq:3-management
+
+C:\labs>docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+rabbitmq            3-management        1c1e1f201079        9 days ago          181MB
+
+C:\labs>echo "%DOCKER_HOST"
+"%DOCKER_HOST"
+
+
+C:\labs>echo "%DOCKER_HOST%"
+"tcp://192.168.99.100:2376"
+
+C:\labs>docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+6d377470f719607835d1df57dc6eb0fb5bafe5f6e8da401606b84d2851e27763
+
+C:\labs>docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED              STATUS              PORTS                                                                                        NAMES
+6d377470f719        rabbitmq:3-management   "docker-entrypoint.s"   About a minute ago   Up 39 seconds       4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp   some-rabbit
+
+C:\labs>
+
+
+
+
+
+
+docker run -d -p 9411:9411 openzipkin/zipkin
+
+
+
+
+
+C:\labs>docker pull openzipkin/zipkin
+Using default tag: latest
+latest: Pulling from openzipkin/zipkin
+24f0c933cbef: Pull complete
+69e2f037cdb3: Pull complete
+1a3f070d750b: Pull complete
+3e010093287c: Pull complete
+7df9dcce0a60: Pull complete
+824016db13c8: Pull complete
+fd2668db6e0d: Pull complete
+6453a70a5672: Pull complete
+71ee7774b52d: Pull complete
+f501de85fd87: Pull complete
+88f9ce9874c2: Pull complete
+dc220d946a3e: Pull complete
+Digest: sha256:20f0889f5a016a0dda63f567fc7d0727cde8ead29ea429e48366c3ba2cd8a075
+Status: Downloaded newer image for openzipkin/zipkin:latest
+
+C:\labs>docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+rabbitmq            3-management        1c1e1f201079        9 days ago          181MB
+openzipkin/zipkin   latest              2c6020d0d20f        5 weeks ago         155MB
+
+C:\labs>
+
+C:\labs>echo "%DOCKER_HOST%"
+"tcp://192.168.99.100:2376"
+
+C:\labs>docker run -d -p 9411:9411 openzipkin/zipkin
+8aa60eca1cc1ffc530c5eaee09509a7b8df7eb33f36627c6d63bfb976e2b9817
+
+C:\labs>docker ps
+CONTAINER ID        IMAGE                   COMMAND                  CREATED                  STATUS              PORTS                                                                                        NAMES
+8aa60eca1cc1        openzipkin/zipkin       "/busybox/sh run.sh"     Less than a second ago   Up 10 seconds       9410/tcp, 0.0.0.0:9411->9411/tcp                                                             zen_chandrasekhar
+6d377470f719        rabbitmq:3-management   "docker-entrypoint.s"   3 hours ago              Up 3 hours          4369/tcp, 5671/tcp, 0.0.0.0:5672->5672/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:15672->15672/tcp   some-rabbit
+
+C:\labs>
